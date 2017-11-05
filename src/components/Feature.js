@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import PmImage from '../assets/images/feature/pm-image.png';
+import TmImage from '../assets/images/feature/tm-image.png';
 import PmIcon from '../assets/images/feature/pm-icon.svg';
 import TmIcon from '../assets/images/feature/tm-icon.svg';
 import Tticon from '../assets/images/feature/tt-icon.svg';
@@ -47,11 +48,17 @@ const ImageBlock = styled.div`
   width: 50%;
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 
 const Image = styled.img`
   width: 80%;
-  margin-left: ${props => props.active ? 'auto' : '0'};
+  margin-left: ${props => props.active ? '0' : 'auto'};
+  position: ${props => props.active ? 'static' : 'absolute'};
+  z-index: ${props => props.active ? '2' : '1'};
+  left: ${props => props.active ? '0' : '100px'};
+  top: ${props => props.active ? '0' : '50px'};
+  opacity: ${props => props.active ? '1' : '0.4'};
 `;
 
 const TextBlock = styled.div`
@@ -131,8 +138,8 @@ class Feature extends Component {
             </Headline>
             <FeatureBlock className="FeatureBlock">
               <ImageBlock className="ImageBlock">
-                <Image src={PmImage} alt="project management feature" className="Image"></Image>
-                <Image className="Image"></Image>
+                <Image active src={PmImage} alt="project management feature" className="Image"></Image>
+                <Image src={TmImage} alt="team messaging feature" className="Image"></Image>
               </ImageBlock>
               <TextBlock className="TextBlock">
                 <EachFeature className="EachFeature">
