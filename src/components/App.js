@@ -19,6 +19,10 @@ class App extends Component {
         <Navigation />
         <Intro />
         <Feature />
+        <Enterprise />
+        <Certificate />
+        <Footer />
+        <Footnote />
       </div>
     );
   }

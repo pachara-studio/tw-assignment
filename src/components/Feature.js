@@ -113,6 +113,8 @@ const LearnMore = SubText.extend`
   max-width: none;
   padding: 40px 0;
   text-decoration: underline;
+  cursor: pointer;
+  font-size: 20px;
 `;
 
 class Feature extends Component {
