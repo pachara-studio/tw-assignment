@@ -6,15 +6,12 @@ import Enterprise from './Enterprise';
 import Certificate from './Certificate';
 import Footer from './Footer';
 import Footnote from './Footnote';
-// import Helmet from 'react-helmet';
 import { injectGlobal } from 'styled-components';
-// import '../App.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Helmet title="You Are Doing Great" /> */}
         <Navigation />
         <Intro />
         <Feature />

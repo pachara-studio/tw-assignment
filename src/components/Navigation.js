@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import logo from '../assets/images/tw-logo.svg';
 import contactIcon from '../assets/images/headphone_icon.svg';
+import media from 'styled-media-query';
 
 const Navbar = styled.div`
   display: flex;
@@ -13,6 +14,12 @@ const Navbar = styled.div`
 
 const LinkGroup = styled.ul`
   display: flex;
+  ${media.lessThan('medium')`
+    display: none;
+  `}
+  ${media.lessThan('large')`
+    padding: 0 0 0 10px;
+  `}
 `;
 
 const Link = styled.li`
@@ -20,6 +27,9 @@ const Link = styled.li`
   margin: 0 15px 0 0;
   font-size: 14px;
   line-height: 1.57;
+  ${media.lessThan('large')`
+    margin: 0 10px 0 0;
+  `}
 `;
 
 const DownArrow = styled.span`
@@ -31,11 +41,17 @@ const DownArrow = styled.span`
   -webkit-transform: rotate(45deg);
   margin: 0 0 0 5px;
   vertical-align: 2px;
+  ${media.lessThan('large')`
+    display: none;
+  `}
 `;
 
 const Contact = styled.div`
   display: flex;
   align-items: center;
+  ${media.lessThan('large')`
+    display: none;
+  `}
 `;
 
 const Icon = styled.img`
@@ -68,6 +84,12 @@ const TrialButton = Button.extend`
   width: 180px;
   border: 1px solid #2eb3b6;
   margin: 0 0 0 12px;
+  ${media.lessThan('small')`
+    display: none;
+  `}
+  ${media.lessThan('large')`
+    margin: 0 0 0 6px;
+  `}
 `;
 
 class Navigation extends Component {

@@ -9,6 +9,7 @@ import Roche from '../assets/images/companies-logo/roche.svg';
 import Att from '../assets/images/companies-logo/at-t.svg';
 import plyr from 'plyr';
 import '../../node_modules/plyr/dist/plyr.css';
+import media from 'styled-media-query';
 
 const IntroWrapper = styled.div`
   margin: 120px auto 0 auto;
@@ -18,11 +19,18 @@ const IntroWrapper = styled.div`
 const UpperSide = styled.div`
   display: flex;
   margin: 0 60px;
+  ${media.lessThan('small')`
+    margin: 0 20px;
+  `}
 `;
 
 const LeftSide = styled.div`
   width: 50%;
   margin: 0 0 0 0;
+  ${media.lessThan('large')`
+    width: 100%;
+    text-align: center;
+  `}
 `;
 
 const TextWrapper = styled.div`
@@ -38,7 +46,9 @@ const Text = styled.h1`
 `;
 
 const ButtonWrapper = styled.div`
-  
+    ${media.lessThan('medium')`
+      display: flex;
+  `}
 `;
 
 const Button = styled.button`
@@ -62,6 +72,9 @@ const ButtonTrial  = Button.extend`
 const RightSide = styled.div`
   width: 50%;
   margin: 0 0 0 0;
+  ${media.lessThan('large')`
+    display: none;
+  `}
 `;
 
 const PlayImage = styled.img`
@@ -72,12 +85,22 @@ const PlayImage = styled.img`
 
 const LowerSide = styled.div`
   margin: 0 60px;
+  ${media.lessThan('large')`
+    margin: 50px 0 0 0;
+    text-align: center;
+  `}
 `;
 
 const ImgWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 5px 0 0 0;
+  ${media.lessThan('small')`
+    display: none;
+  `}
+  ${media.lessThan('large')`
+    justify-content: space-around;
+  `}
 `;
 
 const CompaniesLogo = styled.img`

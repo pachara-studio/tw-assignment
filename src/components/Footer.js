@@ -2,13 +2,21 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import appStore from '../assets/images/footer/app-store-badge.svg';
 import googlePlay from '../assets/images/footer/google-play-badge.png';
+import media from 'styled-media-query';
 
 const FooterWrapper = styled.div`
   max-width: 1169px;
   margin: 70px auto;
   display: flex;
   justify-content: space-between;
+  ${media.lessThan('large')`
+    justify-content: space-around;
+  `}
+  ${media.lessThan('large')`
+    margin: 70px 20px;
+  `}
   > ul {
+    padding-left: 0;
 
     > li {
       list-style: none;
@@ -75,6 +83,12 @@ const FooterWrapper = styled.div`
       margin: 35px 0 0 0;
     }
   }
+
+  > ul.MiddleGroup {
+    ${media.lessThan('medium')`
+      display: none;
+    `}
+  }
   
 `;
 
@@ -95,14 +109,14 @@ class Footer extends Component {
             support@taskworld.com
           </li>
         </ul>
-        <ul className="EachGroup">
+        <ul className="EachGroup MiddleGroup">
           <li>Solutions</li>
           <li>Product</li>
           <li>Enterprise</li>
           <li>Pricing</li>
           <li>Success Stories</li>
         </ul>
-        <ul className="EachGroup">
+        <ul className="EachGroup MiddleGroup">
           <li>Company</li>
           <li>About us</li>
           <li>Careers</li>
@@ -111,7 +125,7 @@ class Footer extends Component {
           <li>Contact us</li>
           <li>Terms, privacy & security</li>
         </ul>
-        <ul className="EachGroup">
+        <ul className="EachGroup MiddleGroup">
           <li>Resources</li>
           <li>User guide</li>
           <li>Getting started</li>

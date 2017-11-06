@@ -8,6 +8,7 @@ import Tticon from '../assets/images/feature/tt-icon.svg';
 import FmIcon from '../assets/images/feature/fm-icon.svg';
 import PrIcon from '../assets/images/feature/pr-icon.svg';
 import GcIcon from '../assets/images/feature/gc-icon.svg';
+import media from 'styled-media-query';
 
 const FeatureWrapper = styled.div`
   background-image: linear-gradient(to right, #1f5c87, rgba(63, 190, 192, 0.48) 44%, rgba(89, 206, 208, 0));
@@ -29,6 +30,9 @@ const Headline = styled.h1`
   font-weight: 300;
   line-height: 1.27;
   padding: 60px;
+  ${media.lessThan('small')`
+    padding: 60px 20px;
+  `}
 `;
 
 const Bold = styled.span`
@@ -46,6 +50,9 @@ const Bold = styled.span`
 const FeatureBlock = styled.div`
   display: flex;
   margin: 0 60px;
+  ${media.lessThan('small')`
+    margin: 0 20px;
+  `}
 `;
 
 const ImageBlock = styled.div`
@@ -53,6 +60,9 @@ const ImageBlock = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  ${media.lessThan('large')`
+    display: none;
+  `}
 `;
 
 const FadeOutLeft = keyframes`
@@ -87,14 +97,14 @@ const Image = styled.img`
   position: ${props => props.active ? 'static' : 'absolute'};
   opacity: ${props => props.active ? '1' : '0.4'};
   z-index: ${props => props.active ? '2' : '1'};
-  ${'' /* transform: ${props => props.active ? translate3d(100%, 0, 0) : translate3d(-100%, 0, 0)}; */}
-  ${'' /* animation: ${props => props.active ? ${FadeOutLeft} 1000ms ease-in-out 0s : FadeInRight 1000ms ease-in-out 0s}; */}
-  ${'' /* animation: ${FadeOutLeft} 1000ms ease-in-out 0s; */}
 
 `;
 
 const TextBlock = styled.div`
   width: 50%;
+  ${media.lessThan('large')`
+    width: 100%;
+  `}
 `;
 
 const EachFeature = styled.div`
@@ -103,12 +113,20 @@ const EachFeature = styled.div`
   margin: 0 0 0 80px;
   padding: 10px 0;
   align-items: center;
+  cursor: pointer;
     &:first-child {
       padding: 0 0 20px 0;
     }
     &:last-child {
       border-bottom: none;
     }
+  ${media.lessThan('large')`
+    width: 60%;
+    margin: 0 auto;
+  `}
+  ${media.lessThan('medium')`
+    width: 100%;
+  `}
 `;
 
 const IconWrapper = styled.div`
@@ -137,8 +155,6 @@ const MainText = styled.h3`
 
 const SubText = styled.h4`
   display: ${props => props.active ? 'block' : 'none'};
-  ${'' /* transition: opacity 1000ms;
-  opacity: ${props => props.active ? '1' : '0'}; */}
   font-size: 16px;
   font-weight: 300;
   line-height: 1.25;

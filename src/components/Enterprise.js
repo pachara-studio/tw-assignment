@@ -8,6 +8,7 @@ import slaIcon from '../assets/images/enterprise/sla.svg';
 import pscIcon from '../assets/images/enterprise/psc.svg';
 import reqDemoImg from '../assets/images/enterprise/device@2x.png';
 import ctaBg from '../assets/images/enterprise/buttom-cta-bg.png';
+import media from 'styled-media-query';
 
 const EnterpriseWrapper = styled.div`
 `;
@@ -45,10 +46,19 @@ const WhiteWrapper = styled.div`
 const FeatureIcon = styled.div`
   display: flex;
   justify-content: space-around;
+
+  ${media.lessThan('medium')`
+    flex-direction: column;
+  `}
 `;
 
 const EachFeature = styled.div`
+  ${media.lessThan('medium')`
+    display: flex;
+    margin: 0 auto;
+  `}
   > ul {
+    padding-left: 0;
     > li.ImgWrapper {
       width: 94px;
       height: 94px;
@@ -79,6 +89,9 @@ const GreenWrapper = styled.div`
   > div {
     max-width: 1169px;
     margin: 70px auto 0px auto;
+    ${media.lessThan('medium')`
+      padding: 0 0 20px 0;
+    `}
     > img {
       position: absolute;
       width: 300px;
@@ -147,7 +160,7 @@ class Enterprise extends Component {
             <EachFeature className="EachFeature">
               <ul className="Wrapepr">
                 <li className="ImgWrapper"><img src={slaIcon} alt="sla-icon" /></li>
-                <li>SLA<br />(Service Level Agreements)</li>
+                <li>SLA (Service<br />Level Agreements)</li>
               </ul>
             </EachFeature>
             <EachFeature className="EachFeature">
