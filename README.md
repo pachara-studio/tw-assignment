@@ -5,4 +5,4 @@
 * And generate static by `react-snapshot`.
 
 
-Thnks :)
+Thanks :)
