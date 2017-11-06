@@ -120,37 +120,37 @@ class Enterprise extends Component {
           <FeatureIcon className="FeatureIcon">
             <EachFeature className="EachFeature">
               <ul className="Wrapepr">
-                <li className="ImgWrapper"><img src={samlIcon} /></li>
+                <li className="ImgWrapper"><img src={samlIcon} alt="sam-icon" /></li>
                 <li>SAML 2.0<br />SSO</li>
               </ul>
             </EachFeature>
             <EachFeature className="EachFeature">
               <ul className="Wrapepr">
-                <li className="ImgWrapper"><img src={vpcIcon} /></li>
+                <li className="ImgWrapper"><img src={vpcIcon} alt="vpn-icon" /></li>
                 <li>VPC/On premise<br />options</li>
               </ul>
             </EachFeature>
             <EachFeature className="EachFeature">
               <ul className="Wrapepr">
-                <li className="ImgWrapper"><img src={tfaIcon} /></li>
+                <li className="ImgWrapper"><img src={tfaIcon} alt="tfa-icon" /></li>
                 <li>Two factor<br />authentication</li>
               </ul>
             </EachFeature>
             <EachFeature className="EachFeature">
               <ul className="Wrapepr">
-                <li className="ImgWrapper"><img src={damIcon} /></li>
+                <li className="ImgWrapper"><img src={damIcon} alt="dam-icon" /></li>
                 <li>Dedicated<br />account manager</li>
               </ul>
             </EachFeature>
             <EachFeature className="EachFeature">
               <ul className="Wrapepr">
-                <li className="ImgWrapper"><img src={slaIcon} /></li>
+                <li className="ImgWrapper"><img src={slaIcon} alt="sla-icon" /></li>
                 <li>SLA<br />(Service Level Agreements)</li>
               </ul>
             </EachFeature>
             <EachFeature className="EachFeature">
               <ul className="Wrapepr">
-                <li className="ImgWrapper"><img src={pscIcon} /></li>
+                <li className="ImgWrapper"><img src={pscIcon} alt="ps-icon" /></li>
                 <li>Privacy Shield<br />certified</li>
               </ul>
             </EachFeature>
@@ -159,7 +159,7 @@ class Enterprise extends Component {
         </WhiteWrapper>
         <GreenWrapper className="GreenWrapper">
           <div>
-            <img src={reqDemoImg} alt="laptop-picture"/>
+            <img src={reqDemoImg} alt="laptop" />
             <h1 className="CtaText">Still on the fence? Talk with us,
             share your requirements and see if Taskworld can help.
             </h1>

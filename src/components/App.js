@@ -3,7 +3,6 @@ import Navigation from "./Navigation";
 import Intro from './Intro';
 import Feature from './Feature';
 import Enterprise from './Enterprise';
-import Demo from './Demo';
 import Certificate from './Certificate';
 import Footer from './Footer';
 import Footnote from './Footnote';

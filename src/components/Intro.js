@@ -7,6 +7,8 @@ import Netflix from '../assets/images/companies-logo/netflix.svg';
 import Salesforce from '../assets/images/companies-logo/salesforce.svg';
 import Roche from '../assets/images/companies-logo/roche.svg';
 import Att from '../assets/images/companies-logo/at-t.svg';
+import plyr from 'plyr';
+import '../../node_modules/plyr/dist/plyr.css';
 
 const IntroWrapper = styled.div`
   margin: 120px auto 0 auto;
@@ -64,6 +66,8 @@ const RightSide = styled.div`
 
 const PlayImage = styled.img`
   width: 100%;
+  cursor: pointer;
+  display: ${props => props.active ? 'none' : 'block'};
 `;
 
 const LowerSide = styled.div`
@@ -79,7 +83,45 @@ const ImgWrapper = styled.div`
 const CompaniesLogo = styled.img`
 `;
 
+const VideoWrapper = styled.div`
+  display: ${props => props.active ? 'block' : 'none'};
+`;
+
 class Intro extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isActive: false,
+      player: {}
+    }
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    this.setState(prevState => ({
+      isActive: !prevState.isActive
+    }));
+    if (this.state.player[0].isReady()) {
+      this.state.player[0]
+      .on('exitfullscreen', function(event) {
+        // TODO:
+        // We can set state to show button image again here!
+        // Just in case we need to.
+        });
+      this.state.player[0].play();
+      this.state.player[0].toggleFullscreen();
+    };
+  }
+  
+  componentDidMount() {
+    this.setState(prevState => ({
+      player: plyr.setup('.js-player')
+    }));
+  };
+  componentWillUnmount() {
+
+  };
   render() {
     return (
       <IntroWrapper className="IntroWrapper">
@@ -95,7 +137,10 @@ class Intro extends Component {
             </ButtonWrapper>
           </LeftSide>
           <RightSide className="RightSide">
-            <PlayImage src={playImage} className="playImage" alt="play image" />
+            <VideoWrapper className="VideoWrapper"  active={this.state.isActive}>
+              <div data-type="vimeo" data-video-id="143418951" className="js-player"></div>
+            </VideoWrapper>
+            <PlayImage onClick={this.handleClick} src={playImage} className="playImage" alt="play image" active={this.state.isActive} />
           </RightSide>
         </UpperSide>
         <LowerSide className="LowerSide">

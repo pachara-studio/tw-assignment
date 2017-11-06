@@ -31,11 +31,16 @@ const Headline = styled.h1`
   padding: 60px;
 `;
 
-const Bold = Headline.extend`
+// const Bold = Headline.extend`
+const Bold = styled.span`
   font-weight: bold;
   margin: 0;
   display: inline;
   padding: 0;
+  text-align: center;
+  color: #ffffff;
+  font-size: 30px;
+  line-height: 1.27;
   
 `;
 

@@ -87,11 +87,11 @@ class Footer extends Component {
           <li>28 Valley Road, Suite#1</li>
           <li>Montclair, NJ 07042</li>
           <li className="IconWrapper First">
-            <i class="fa fa-phone" aria-hidden="true"></i>
+            <i className="fa fa-phone" aria-hidden="true"></i>
             +(1) 866 428 9571
           </li>
           <li className="IconWrapper">
-            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <i className="fa fa-envelope" aria-hidden="true"></i>
             support@taskworld.com
           </li>
         </ul>
