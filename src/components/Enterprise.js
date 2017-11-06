@@ -28,8 +28,9 @@ const WhiteWrapper = styled.div`
     font-weight: 300;
     line-height: 1;
     color: #1f5c87;
-    margin: 67px 0 150px 0;
+    margin: 67px auto 150px auto;
     cursor: pointer;
+    width: 120px;
     text-decoration: underline;
   }
   > h4 {
@@ -80,9 +81,10 @@ const GreenWrapper = styled.div`
     margin: 70px auto 0px auto;
     > img {
       position: absolute;
-      top: -65px;
-      left: 41%;
       width: 300px;
+      top: 60px;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
 
     > h1 {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import PmImage from '../assets/images/feature/pm-image.png';
 import TmImage from '../assets/images/feature/tm-image.png';
 import PmIcon from '../assets/images/feature/pm-icon.svg';
@@ -31,7 +31,6 @@ const Headline = styled.h1`
   padding: 60px;
 `;
 
-// const Bold = Headline.extend`
 const Bold = styled.span`
   font-weight: bold;
   margin: 0;
@@ -56,14 +55,42 @@ const ImageBlock = styled.div`
   position: relative;
 `;
 
+const FadeOutLeft = keyframes`
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+`;
+
+const FadeInRight = keyframes`
+  0% {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+`;
+
 const Image = styled.img`
   width: 80%;
   margin-left: ${props => props.active ? '0' : 'auto'};
-  position: ${props => props.active ? 'static' : 'absolute'};
-  z-index: ${props => props.active ? '2' : '1'};
   left: ${props => props.active ? '0' : '100px'};
+  ${'' /* left: ${props => props.active ? '0' : '100px'}; */}
   top: ${props => props.active ? '0' : '50px'};
+  transition: opacity 1000ms;
+  transition: left 1000ms;
+  position: ${props => props.active ? 'static' : 'absolute'};
   opacity: ${props => props.active ? '1' : '0.4'};
+  z-index: ${props => props.active ? '2' : '1'};
+  ${'' /* transform: ${props => props.active ? translate3d(100%, 0, 0) : translate3d(-100%, 0, 0)}; */}
+  ${'' /* animation: ${props => props.active ? ${FadeOutLeft} 1000ms ease-in-out 0s : FadeInRight 1000ms ease-in-out 0s}; */}
+  ${'' /* animation: ${FadeOutLeft} 1000ms ease-in-out 0s; */}
+
 `;
 
 const TextBlock = styled.div`
@@ -110,6 +137,8 @@ const MainText = styled.h3`
 
 const SubText = styled.h4`
   display: ${props => props.active ? 'block' : 'none'};
+  ${'' /* transition: opacity 1000ms;
+  opacity: ${props => props.active ? '1' : '0'}; */}
   font-size: 16px;
   font-weight: 300;
   line-height: 1.25;
@@ -121,16 +150,31 @@ const SubText = styled.h4`
 
 const LearnMore = SubText.extend`
   display: block;
-  text-align: center;
   max-width: none;
   padding: 40px 0;
   text-decoration: underline;
   cursor: pointer;
   font-size: 20px;
+  width: 120px;
+  margin: 0 auto;
 `;
 
 class Feature extends Component {
-  state = {  }
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      active: 1
+    }
+    
+  }
+
+  handleMouseOver(ele) {
+    this.setState(() => ({
+      active: ele
+    }));
+  }
+  
   render() {
     return (
       <FeatureWrapper className="FeatureWrapper">
@@ -143,67 +187,81 @@ class Feature extends Component {
             </Headline>
             <FeatureBlock className="FeatureBlock">
               <ImageBlock className="ImageBlock">
-                <Image active src={PmImage} alt="project management feature" className="Image"></Image>
-                <Image src={TmImage} alt="team messaging feature" className="Image"></Image>
+                <Image active={this.state.active !== 2} src={PmImage} alt="project management feature" className="Image"></Image>
+                <Image active={this.state.active === 2} src={TmImage} alt="team messaging feature" className="Image"></Image>
               </ImageBlock>
               <TextBlock className="TextBlock">
-                <EachFeature className="EachFeature">
-                  <IconWrapper active className="IconWrapper">
+                <EachFeature className="EachFeature"
+                 onMouseEnter={this.handleMouseOver.bind(this, 1)}
+                >
+                  <IconWrapper active={this.state.active === 1} lassName="IconWrapper">
                     <Icon src={PmIcon} alt="project management icon" className="Icon"></Icon>
                   </IconWrapper>
                   <TextWrapper className="TextWrapper">
                     <MainText className="MainText">Project management</MainText>
-                    <SubText active className="SubText">Effortlessly assign and track work with visual boards.</SubText>
+                    <SubText active={this.state.active === 1} className="SubText">Effortlessly assign and track work with visual boards.</SubText>
                   </TextWrapper>
                 </EachFeature>
-                <EachFeature className="EachFeature">
-                  <IconWrapper className="IconWrapper">
+                <EachFeature className="EachFeature"
+                 onMouseEnter={this.handleMouseOver.bind(this, 2)}
+                >
+                  <IconWrapper active={this.state.active === 2} className="IconWrapper">
                     <Icon src={TmIcon} alt="" className="Icon"></Icon>
                   </IconWrapper>
                   <TextWrapper className="TextWrapper">
                     <MainText className="MainText">Team messaging</MainText>
-                    <SubText className="SubText">See who's online, who has read your message and receive instant response.</SubText>
+                    <SubText active={this.state.active === 2} className="SubText">See who's online, who has read your message and receive instant response.</SubText>
                   </TextWrapper>
                 </EachFeature>
-                <EachFeature className="EachFeature">
-                  <IconWrapper className="IconWrapper">
+                <EachFeature className="EachFeature"
+                 onMouseEnter={this.handleMouseOver.bind(this, 3)}
+                >
+                  <IconWrapper active={this.state.active === 3} className="IconWrapper">
                     <Icon src={Tticon} alt="" className="Icon"></Icon>
                   </IconWrapper>
                   <TextWrapper className="TextWrapper">
                     <MainText className="MainText">Time tracking </MainText>
-                    <SubText className="SubText">Track time spent on task and get logs for each project.</SubText>
+                    <SubText active={this.state.active === 3} className="SubText">Track time spent on task and get logs for each project.</SubText>
                   </TextWrapper>
                 </EachFeature>
-                <EachFeature className="EachFeature">
-                  <IconWrapper className="IconWrapper">
+                <EachFeature className="EachFeature"
+                 onMouseEnter={this.handleMouseOver.bind(this, 4)}
+                >
+                  <IconWrapper active={this.state.active === 4} className="IconWrapper">
                     <Icon src={FmIcon} alt="" className="Icon"></Icon>
                   </IconWrapper>
                   <TextWrapper className="TextWrapper">
                     <MainText className="MainText">File management</MainText>
-                    <SubText className="SubText">Each file is where it's supposed to be, attached to the relevant task and project.</SubText>
+                    <SubText active={this.state.active === 4} className="SubText">Each file is where it's supposed to be, attached to the relevant task and project.</SubText>
                   </TextWrapper>
                 </EachFeature>
-                <EachFeature className="EachFeature">
-                  <IconWrapper className="IconWrapper">
+                <EachFeature className="EachFeature"
+                 onMouseEnter={this.handleMouseOver.bind(this, 5)}
+                >
+                  <IconWrapper active={this.state.active === 5} className="IconWrapper">
                     <Icon src={PrIcon} alt="" className="Icon"></Icon>
                   </IconWrapper>
                   <TextWrapper className="TextWrapper">
                     <MainText className="MainText">Performance reports</MainText>
-                    <SubText className="SubText">Stay on top of your performance with reports and real-time feedback.</SubText>
+                    <SubText active={this.state.active === 5} className="SubText">Stay on top of your performance with reports and real-time feedback.</SubText>
                   </TextWrapper>
                 </EachFeature>
-                <EachFeature className="EachFeature">
-                  <IconWrapper className="IconWrapper">
+                <EachFeature className="EachFeature"
+                 onMouseEnter={this.handleMouseOver.bind(this, 6)}
+                >
+                  <IconWrapper active={this.state.active === 6} className="IconWrapper">
                     <Icon src={GcIcon} alt="" className="Icon"></Icon>
                   </IconWrapper>
                   <TextWrapper className="TextWrapper">
                     <MainText className="MainText">Gantt chart</MainText>
-                    <SubText className="SubText">Visualize project progress in a timeline and anticipate potential problems.</SubText>
+                    <SubText active={this.state.active === 6} className="SubText">Visualize project progress in a timeline and anticipate potential problems.</SubText>
                   </TextWrapper>
                 </EachFeature>
               </TextBlock>
             </FeatureBlock>
-            <LearnMore className="LeranMore">Learn more ></LearnMore>
+            <div>
+              <LearnMore className="LeranMore">Learn more ></LearnMore>
+            </div>
           </ContentWrapper>
         </BgWrapper>
       </FeatureWrapper>
