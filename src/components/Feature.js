@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import PmImage from '../assets/images/feature/pm-image.png';
 import TmImage from '../assets/images/feature/tm-image.png';
 import PmIcon from '../assets/images/feature/pm-icon.svg';
@@ -63,27 +63,6 @@ const ImageBlock = styled.div`
   ${media.lessThan('large')`
     display: none;
   `}
-`;
-
-const FadeOutLeft = keyframes`
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: translate3d(-100%, 0, 0);
-  }
-`;
-
-const FadeInRight = keyframes`
-  0% {
-    opacity: 0;
-    transform: translate3d(100%, 0, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: none;
-  }
 `;
 
 const Image = styled.img`
